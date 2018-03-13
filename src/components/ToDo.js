@@ -7,13 +7,8 @@
     return (
       <li>
           <input type="checkbox" checked={ this.props.isCompleted } onChange={ this.props.toggleComplete } />
-          <Button
-            onClick={deleteTodo}
-            title="Delete" 
-            color="#841584"
-          />
-         <span>{ this.props.description }</span>
-         <span>{ this.props.deleteTodo}</span>
+          <input type="button" onClick= { this.props.deleteTodo } title="Delete" color="#841584"/>
+        
        </li>
     );
   }
