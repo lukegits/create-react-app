@@ -5,9 +5,9 @@
     return (
       <li>
           <input type="checkbox" checked={ this.props.isCompleted } onChange={ this.props.toggleComplete } />
-          <button type="button" onClick={ this.props.deleteTodo } value={ this.props.description } > Delete </button>
-         <span>{ this.props.description }</span>
-       </li>
+          <button type="button" onClick={ this.props.deleteTodo } > Delete </button>
+          <span>{ this.props.description }</span>
+      </li>
     );
   }
 }

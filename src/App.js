@@ -14,13 +14,12 @@ class App extends Component {
         newTodoDescription: ''
    };
   }
-  handleDelete(e) {
-    var testObj = this.state.todos.filter(function(x) {
-      return x.description == e.target.value;
-    })
-    var idx = this.state.todos.indexOf(testObj);
-    this.state.todos.splice(idx, 1);
-    this.setState({ todos: this.state.todos });
+  handleDelete(index) {
+    const todos = this.state.todos.slice();
+    var newArr = todos.filter(function(x, idx) {
+      return idx != index;
+    });
+    this.setState({ todos: newArr });
   }
   handleChange(e) {
      this.setState({ newTodoDescription: e.target.value })
@@ -44,7 +43,7 @@ class App extends Component {
       <div className="App">
       <ul>
       { this.state.todos.map( (todo, index) =>
-        <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index)} deleteTodo={(e) => this.handleDelete(e)}  />
+        <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index)} deleteTodo={() => this.handleDelete(index)}  />
       )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
